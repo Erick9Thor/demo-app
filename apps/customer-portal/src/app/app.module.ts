@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { authRoutes } from '@demo-app/auth';
+import { AuthModule, authRoutes } from '@demo-app/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@demo-app/layout';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    AuthModule,
     RouterModule.forRoot(
       [
         {
