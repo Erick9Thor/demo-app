@@ -5,15 +5,27 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { authRoutes } from '@demo-app/auth';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([{ path: 'auth', children: authRoutes }], {
-      initialNavigation: 'enabledBlocking',
-    }),
+    BrowserAnimationsModule,
+    RouterModule.forRoot(
+      [
+        {
+          path: '',
+          pathMatch: 'full',
+          redirectTo: 'auth',
+        },
+        { path: 'auth', children: authRoutes },
+      ],
+      {
+        initialNavigation: 'enabledBlocking',
+      }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

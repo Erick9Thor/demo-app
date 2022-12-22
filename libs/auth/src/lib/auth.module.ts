@@ -6,6 +6,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { HttpClientModule } from '@angular/common/http';
 
 export const authRoutes: Route[] = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
   { path: 'login', component: LoginComponent },
 ];
 @NgModule({
