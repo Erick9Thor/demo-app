@@ -8,6 +8,8 @@ import { Authenticate } from '@demo-app/data-models';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
+  hide = true;
+
   @Output() submitForm = new EventEmitter<Authenticate>();
 
   loginForm = new FormGroup({

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { AuthModule, authRoutes } from '@demo-app/auth';
+import { AuthGuard, AuthModule, authRoutes } from '@demo-app/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@demo-app/layout';
@@ -18,12 +18,14 @@ import { LayoutModule } from '@demo-app/layout';
     AuthModule,
     RouterModule.forRoot(
       [
-        {
-          path: '',
-          pathMatch: 'full',
-          redirectTo: 'auth',
-        },
+        { path: '', pathMatch: 'full', redirectTo: 'products' },
         { path: 'auth', children: authRoutes },
+        {
+          path: 'products',
+          loadChildren: () =>
+            import('@demo-app/products').then((mod) => mod.ProductsModule),
+          canActivate: [AuthGuard],
+        },
       ],
       {
         initialNavigation: 'enabledBlocking',
